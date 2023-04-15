@@ -31,5 +31,4 @@ class MovieDetail(generics.RetrieveAPIView):
 
     def get(self, *args, **kwargs):
         queryset = MoviesData.objects.get(id=kwargs["pk"])
-        print(queryset)
         return Response({"movies_data": queryset})
