@@ -3,7 +3,7 @@ from .models import MoviesData
 
 
 class MoviesSettings(admin.ModelAdmin):
-    list_display = ("name", "duration")
+    list_display = ("owner", "duration")
 
 
 admin.site.register(MoviesData, MoviesSettings)
