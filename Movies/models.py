@@ -2,24 +2,26 @@ from django.db import models
 
 
 class MoviesData(models.Model):
+    name = models.CharField(max_length=255, default="None", null=False)
     genres = models.ManyToManyField('Movies.Genre', related_name='Movies')
     premier_date = models.DateField()
-    description = models.TextField(max_length=600, default="undecided", null=False)
+    description = models.TextField(max_length=600, default="undecided", null=True)
     directors = models.ManyToManyField('Movies.Directors', related_name='Movies')
     writers = models.ManyToManyField('Movies.Writers', related_name='Movies')
     actors = models.ManyToManyField('Movies.Actors', related_name='Movies')
     rating = models.DecimalField(max_digits=3, decimal_places=1)
     duration = models.DurationField()
     owner = models.ForeignKey(
-        "auth.user", related_name="Movies", on_delete=models.CASCADE, null=True
+        "auth.user", related_name="Movies", on_delete=models.CASCADE,
+        null=True
     )
-    poster = models.ImageField()
+    poster = models.ImageField(upload_to="Movies/images")
 
     class Meta:
         ordering = ["duration"]
 
     def __str__(self):
-        return self.owner
+        return self.name
 
 
 class Genre(models.Model):
