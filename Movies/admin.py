@@ -6,8 +6,6 @@ class MoviesSettings(admin.ModelAdmin):
     list_display = ("owner", "duration")
 
 
-admin.site.register(MoviesData, MoviesSettings)
+admin.site.register(movies_data, MoviesSettings)
 admin.site.register(Genre)
-admin.site.register(Writers)
-admin.site.register(Actors)
-admin.site.register(Directors)
+admin.site.register(Person)
